@@ -1,0 +1,46 @@
+@import "./../../../styles/variables";
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+
+	&__label {
+		font-style: italic;
+		color: gray;
+		margin-bottom: $spacing-1;
+	}
+
+	&__input[role="text"] {
+		height: 30px;
+		border: 1px solid $slate;
+		padding: 0 $spacing-2;
+		transition: background-color 200ms ease-in-out;
+
+		&:hover {
+			background-color: $slate-light;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__input[role="button"] {
+		width: 70px;
+		height: 33px;
+		text-transform: uppercase;
+		border-radius: $rounded-sm;
+		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.29);
+		border: none;
+		transition: background 300ms ease-in-out;
+		background: $acent-dark;
+		min-width: 70px;
+		width: auto;
+		padding: 0 $spacing-4;
+		color: $white;
+
+		&:hover {
+			background: $acent;
+		}
+	}
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NavigationLinkAtom.scss";
 
 export type NavigationLinkAtomProps = {
 	to: string;
@@ -11,11 +12,8 @@ export const NavigationLinkAtom = ({ to, label, isSelected }: NavigationLinkAtom
 	const ariaCurrent = isSelected ? "page" : "false";
 
 	return (
-		<li>
-			<Link to={to} aria-current={ariaCurrent}>
-				{label}
-			</Link>
-			;
-		</li>
+		<Link to={to} aria-current={ariaCurrent} className="link">
+			{label}
+		</Link>
 	);
 };

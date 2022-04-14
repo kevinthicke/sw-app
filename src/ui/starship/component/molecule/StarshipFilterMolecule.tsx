@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ButtonAtom } from "../../../shared/component/atom/button/ButtonAtom";
 import { InputAtom } from "../../../shared/component/atom/input/InputAtom";
+import "./StarshipFilterMolecule.scss";
 
 type StarshipFilterMoleculeProps = {
 	value: string;
@@ -19,8 +20,11 @@ export const StarshipFilterMolecule = ({ value, onSearchStarshipByName }: Starsh
 	};
 
 	return (
-		<div>
-			<InputAtom value={searchKeyword} label="Search" onChange={handleOnChange} />
+		<div className="filter">
+			<div className="filter__search-box">
+				<InputAtom value={searchKeyword} label="Looking for a starship?" onChange={handleOnChange} />
+			</div>
+
 			<InputAtom type="button" value="Search!" onClick={handleOnClick} />
 		</div>
 	);

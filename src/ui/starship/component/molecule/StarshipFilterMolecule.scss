@@ -1,0 +1,14 @@
+@import "./../../../../ui/shared/styles/variables";
+
+.filter {
+	height: 60px;
+	display: flex;
+	align-items: flex-end;
+	border-bottom: 1px solid $slate-light;
+	padding: $spacing-3 $spacing-5;
+
+	&__search-box {
+		width: 100%;
+		margin: 0 $spacing-1;
+	}
+}

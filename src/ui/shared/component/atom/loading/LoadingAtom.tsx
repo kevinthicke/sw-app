@@ -1,3 +1,5 @@
+import "./LoadingAtom.scss";
+
 export const LoadingAtom = () => {
-	return <div>loading...</div>;
+	return <div className="loading">loading...</div>;
 };
