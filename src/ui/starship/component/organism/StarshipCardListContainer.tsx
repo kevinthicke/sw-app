@@ -9,37 +9,47 @@ import { PageSelectorAtom } from "../../../shared/component/atom/pageSelector/Pa
 import { LoadingContext } from "../../../shared/context/loading/LoadingContext";
 import { usePaginate } from "../../../shared/hook/usePagination";
 import { StarshipCardListOrganism } from "./StarshipCardListOrganism";
+import { PromiseEither } from "./../../../../core/shared/domain/dataType/PromisedEither";
 
-export const StarshipCardListContainer = () => {
-	const [starshipPage, setStarshipPage] = useState<Page<Starship> | null>(null);
+const useConsumeUsecase = <L extends Error, R>(
+	promise: PromiseEither<L, R>,
+	{ dependencies, onSuccess }: { dependencies: any[]; onSuccess: (value: R) => any }
+) => {
 	const { showLoading, closeLoading } = useContext(LoadingContext);
-	const { currentPage, setCurrentPage } = usePaginate();
 
-	const [search] = useSearchParams();
-
-	const searchParam = search.get(StarshipRouteQueryParams.SEARCH);
 	useEffect(() => {
-		const setStarshipListFromUseCase = async () => {
+		const consumePromise = async () => {
 			showLoading();
-			const { error, ok: starshipPageFromUseCase } = await getAllStarshipsUseCase({
-				page: currentPage,
-				keyword: searchParam ?? "",
-			});
+			const { error, ok } = await promise;
+			if (ok) {
+				onSuccess(ok);
+			}
 
 			if (error) {
 				handleErrorUseCase(error);
 			}
 
-			starshipPageFromUseCase && setStarshipPage(() => starshipPageFromUseCase);
 			closeLoading();
 		};
 
-		setStarshipListFromUseCase();
-	}, [currentPage, showLoading, closeLoading, searchParam]);
+		consumePromise();
+	}, [...dependencies]);
+};
 
-	//useEffect(() => {
-	//	setCurrentPage(() => 1);
-	//}, [searchParam, setCurrentPage]);
+export const StarshipCardListContainer = () => {
+	const [starshipPage, setStarshipPage] = useState<Page<Starship> | null>(null);
+	const { currentPage, setCurrentPage } = usePaginate();
+
+	const [search] = useSearchParams();
+
+	const searchParam = search.get(StarshipRouteQueryParams.SEARCH);
+	useConsumeUsecase(
+		getAllStarshipsUseCase({
+			page: currentPage,
+			keyword: searchParam ?? "",
+		}),
+		{ dependencies: [currentPage], onSuccess: setStarshipPage }
+	);
 
 	const updateCurrentPage = (value: 1 | -1) => {
 		setCurrentPage((currentPage) => currentPage + value);
