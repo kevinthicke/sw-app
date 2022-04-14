@@ -11,6 +11,11 @@
 		cursor: pointer;
 	}
 
+	&:disabled {
+		opacity: 50;
+		cursor: not-allowed;
+	}
+
 	&--sm {
 		min-width: 70px;
 		width: auto;
@@ -34,6 +39,10 @@
 
 		&:hover {
 			background: $primary;
+
+			&:disabled {
+				background: $primary-dark;
+			}
 		}
 	}
 
@@ -43,6 +52,10 @@
 
 		&:hover {
 			background: $acent;
+
+			&:disabled {
+				background: $acent-dark;
+			}
 		}
 	}
 }

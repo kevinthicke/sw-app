@@ -1,0 +1,44 @@
+@import "./../../../styles/variables";
+@import "./../../../styles/device-width";
+
+.footer {
+	background-color: black;
+	color: white;
+
+	padding-top: $spacing-8;
+	padding-bottom: $spacing-4;
+	padding-left: 50px;
+	padding-right: 50px;
+
+	&__list-container {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+
+		@media (min-width: $device-size-sm) {
+			width: 70%;
+			justify-content: space-between;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__list-item {
+		margin: $spacing-2px 0;
+		&:first-child {
+			font-weight: $font-bold;
+			text-transform: uppercase;
+			color: $slate-dark;
+			margin: $spacing-2 0;
+		}
+	}
+
+	&__meta {
+		text-align: end;
+		font-style: italic;
+		color: $slate-dark;
+	}
+}

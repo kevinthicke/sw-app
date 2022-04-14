@@ -1,13 +1,12 @@
-import { dasherize } from "../../../shared/domain/utils/dasherize"
-import { createPageFrom, Page } from "../../../shared/domain/valueObject/Page"
+import { Page } from "../../../shared/domain/valueObject/Page"
 import { SwapiAPIPage } from "../../../shared/infrastructure/dto/SwapiAPIPage"
 import { Starship } from "../../domain/entity/Starship"
 import { StarshipSwapiAPIDTO } from "../dto/StarshipSwapiAPIDto"
 
 export const starshipSwapiAPIMapper = {
-  toDomain({ created, name, cargo_capacity, consumables, cost_in_credits, length, max_atmosphering_speed, model }: StarshipSwapiAPIDTO): Starship {
+  toDomain({ created, name, cargo_capacity, consumables, cost_in_credits, length, max_atmosphering_speed, model, url }: StarshipSwapiAPIDTO): Starship {
     return {
-      id: `${dasherize(name)}-${new Date(created).getTime()}`,
+      id: url,
       name,
       cargoCapacity: cargo_capacity,
       consumables,
@@ -20,11 +19,13 @@ export const starshipSwapiAPIMapper = {
   toDomainList(starshipDTOList: StarshipSwapiAPIDTO[]): Starship[] {
     return starshipDTOList.map(starshipSwapiAPIMapper.toDomain)
   },
-  toDomainPage({ count, results, currentPage }: SwapiAPIPage<StarshipSwapiAPIDTO> & { currentPage: number }): Page<Starship> {
-    return createPageFrom({
+  toDomainPage({ count, results, currentPage, next, previous }: SwapiAPIPage<StarshipSwapiAPIDTO> & { currentPage: number }): Page<Starship> {
+    return {
       totalElements: count,
-      currentPage: currentPage,
-      content: starshipSwapiAPIMapper.toDomainList(results),
-    })
+      currentPage,
+      elements: starshipSwapiAPIMapper.toDomainList(results),
+      existsPrevPage: !!previous,
+      existsNextPage: !!next,
+    }
   }
 }

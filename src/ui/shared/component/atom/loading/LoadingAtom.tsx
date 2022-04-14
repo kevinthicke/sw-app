@@ -1,5 +1,10 @@
 import "./LoadingAtom.scss";
 
-export const LoadingAtom = () => {
-	return <div className="loading">loading...</div>;
+type LoadingAtomProps = {
+	isDisplayed: boolean;
+};
+
+export const LoadingAtom = ({ isDisplayed }: LoadingAtomProps) => {
+	const className = `loading ${isDisplayed ? "loading--displayed" : ""}`;
+	return <div className={className}>Loading</div>;
 };

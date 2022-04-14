@@ -1,3 +1,4 @@
 export enum StarshipRouteQueryParams {
-  SEARCH = 'search'
+  SEARCH = 'search',
+  PAGE = 'page'
 }

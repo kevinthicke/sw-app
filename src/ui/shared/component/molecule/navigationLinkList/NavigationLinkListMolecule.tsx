@@ -2,10 +2,14 @@ import React from "react";
 import { Link, Routes, useLocation } from "react-router-dom";
 import { AppRouteName } from "../../../../../core/shared/domain/valueObject/AppRoute";
 import { NavigationLinkAtom } from "../../atom/navigationLink/NavigationLinkAtom";
-import { makeRoutesService } from "./../../../../../core/shared/domain/service/routesService";
+import { makeRoutesService } from "../../../../../core/shared/domain/service/RoutesService";
 import "./NavigationLinkListMolecule.scss";
 
-export const NavigationLinkListMolecule = () => {
+type NavigationLinkListMoleculeProps = {
+	onSelectedLink: () => any;
+};
+
+export const NavigationLinkListMolecule = ({ onSelectedLink }: NavigationLinkListMoleculeProps) => {
 	const appRoutesService = makeRoutesService();
 	const appRouteList = appRoutesService.getChildrenByName(AppRouteName.HOME);
 	const { pathname } = useLocation();
@@ -19,7 +23,13 @@ export const NavigationLinkListMolecule = () => {
 		<ul className="navigation-links">
 			{appRouteList.map(({ path, label }) => (
 				<li className={getLinkClassName(path)}>
-					<NavigationLinkAtom key={path} to={path} label={label} isSelected={isPathSelected(path)} />
+					<NavigationLinkAtom
+						key={path}
+						to={path}
+						label={label}
+						isSelected={isPathSelected(path)}
+						onClick={onSelectedLink}
+					/>
 				</li>
 			))}
 		</ul>

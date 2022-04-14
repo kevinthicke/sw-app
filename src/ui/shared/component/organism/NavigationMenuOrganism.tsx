@@ -12,6 +12,10 @@ export const NavigationMenuOrganism = () => {
 		setIsExpanded((value) => !value);
 	};
 
+	const handleOnSelectedLink = () => {
+		setIsExpanded(() => false);
+	};
+
 	const navigationLinksClassName = `navigation__links ${isExpanded ? "navigation__links--expanded" : ""}`;
 
 	return (
@@ -33,7 +37,7 @@ export const NavigationMenuOrganism = () => {
 				</div>
 			</div>
 			<nav aria-labelledby="main-menu" className={navigationLinksClassName}>
-				<NavigationLinkListMolecule />
+				<NavigationLinkListMolecule onSelectedLink={handleOnSelectedLink} />
 			</nav>
 		</div>
 	);

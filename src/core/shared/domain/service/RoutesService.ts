@@ -44,6 +44,14 @@ export const makeRoutesService = () => {
     return appRouteList.find(appRoute => appRoute.name === appRouteName) ?? null
   }
 
+  const findBaseAppChildByName = (appRouteName: AppRouteName) => {
+    const route = findBaseAppRouteByRouteName(AppRouteName.HOME);
+    console.log({ route })
+    return route?.children
+      ?.find(childAppRoute => childAppRoute.name === appRouteName) ?? null
+  }
+
+
   const getChildrenByName = (appRouteName: AppRouteName) => {
     const appRoute = appRouteList.find(appRoute => appRoute.name === appRouteName);
     return appRoute?.children ?? [];
@@ -53,5 +61,6 @@ export const makeRoutesService = () => {
     getBaseAppRoutes,
     getChildrenByName,
     findBaseAppRouteByRouteName,
+    findBaseAppChildByName
   }
 }

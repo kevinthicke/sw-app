@@ -6,13 +6,14 @@ export type NavigationLinkAtomProps = {
 	to: string;
 	label: string;
 	isSelected: boolean;
+	onClick?: () => any;
 };
 
-export const NavigationLinkAtom = ({ to, label, isSelected }: NavigationLinkAtomProps) => {
+export const NavigationLinkAtom = ({ to, label, isSelected, onClick }: NavigationLinkAtomProps) => {
 	const ariaCurrent = isSelected ? "page" : "false";
 
 	return (
-		<Link to={to} aria-current={ariaCurrent} className="link">
+		<Link to={to} aria-current={ariaCurrent} className="link" onClick={onClick}>
 			{label}
 		</Link>
 	);

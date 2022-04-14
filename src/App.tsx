@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { makeRoutesService } from "./core/shared/domain/service/routesService";
+import { makeRoutesService } from "./core/shared/domain/service/RoutesService";
 import { AppRoute, AppRouteName } from "./core/shared/domain/valueObject/AppRoute";
 import { PeopleListPage } from "./ui/people/component/page/PeopleListPage";
 import { PlanetListPage } from "./ui/planet/component/page/PlanetListPage";

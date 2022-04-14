@@ -3,7 +3,7 @@
 .main-layout {
 	display: grid;
 
-	grid-template-rows: 50px auto 12fr;
+	grid-template-rows: 50px auto 1fr;
 	grid-template-areas:
 		"header"
 		"navigation"
@@ -29,5 +29,10 @@
 
 	&__main {
 		grid-area: content;
+		overflow-y: auto;
+
+		@media (min-width: $device-size-sm) {
+			overflow-y: initial;
+		}
 	}
 }

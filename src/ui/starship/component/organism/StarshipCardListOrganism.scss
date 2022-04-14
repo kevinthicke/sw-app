@@ -1,0 +1,23 @@
+@import "./../../../shared/styles/variables.scss";
+@import "./../../../shared/styles/device-width";
+
+.starship-card-list {
+	margin: $spacing-4;
+
+	@media (min-width: $device-size-sm) {
+		height: 70vh;
+		overflow-y: auto;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		&__item {
+			flex: 1;
+			min-width: 300px;
+			margin: $spacing-2;
+		}
+	}
+}

@@ -1,24 +1,47 @@
-import { useEffect, useState } from "react";
-import { createArrayOfNulls } from "../../../../../core/shared/domain/utils/createArrayOfNulls";
-import { dasherize } from "../../../../../core/shared/domain/utils/dasherize";
+import { compose } from "../../../../../core/shared/domain/utils/compose";
 import { Page } from "../../../../../core/shared/domain/valueObject/Page";
+import { createPageRangeFrom, getPageRangeToString } from "../../../../../core/shared/domain/valueObject/PageRange";
 import { ButtonAtom } from "../button/ButtonAtom";
+import "./PageSelectorAtom.scss";
 
 type PageSelectorAtomProps = {
 	page: Page<any>;
 	ariaLabel: string;
-	onPageClick: (pageNumber: number) => any;
+	onPrevPageClick: () => any;
+	onNextPageClick: () => any;
 };
 
-export const PageSelectorAtom = ({ page, ariaLabel, onPageClick }: PageSelectorAtomProps) => {
+export const PageSelectorAtom = ({ page, ariaLabel, onPrevPageClick, onNextPageClick }: PageSelectorAtomProps) => {
+	const pageRangeLabel = compose(createPageRangeFrom, getPageRangeToString)(page);
+
 	return (
-		<nav role="navigation" aria-label={ariaLabel}>
-			<ul>
-				{createArrayOfNulls(page.totalPages)
-					.map((_, index) => index + 1)
-					.map((number) => (
-						<ButtonAtom key={`${number}-${ariaLabel}`} role="link" label={number} onClick={() => onPageClick(number)} />
-					))}
+		<nav aria-label={ariaLabel} className="page-selector">
+			<ul className="page-selector__button-group">
+				<li className="page-selector__button-group__button">
+					<ButtonAtom
+						onClick={onPrevPageClick}
+						role="link"
+						size="sm"
+						aria-label="Go to previous page"
+						isDisabled={!page.existsPrevPage}
+					>
+						Prev
+					</ButtonAtom>
+				</li>
+				<span className="page-selector__button-group__range">
+					{pageRangeLabel} of {page.totalElements}
+				</span>
+				<li aria-label="Go to next page" className="page-selector__button-group__button">
+					<ButtonAtom
+						onClick={onNextPageClick}
+						role="link"
+						size="sm"
+						aria-label="Go to next page"
+						isDisabled={!page.existsNextPage}
+					>
+						Next
+					</ButtonAtom>
+				</li>
 			</ul>
 		</nav>
 	);

@@ -1,4 +1,4 @@
-import { PageMother } from "../../../../shared/domain/valueObject/__mocks__/PageMother";
+import { Page } from "../../../../shared/domain/valueObject/Page";
 import { Starship } from "../Starship";
 
 //NOTE: Object Mother pattern https://martinfowler.com/bliki/ObjectMother.html
@@ -56,11 +56,13 @@ export const StarshipMother = {
 
     return starshipList
   },
-  newStarshipPage() {
-    return PageMother.newPage({
+  newStarshipPage(): Page<Starship> {
+    return {
       totalElements: 10,
-      content: StarshipMother.newStarshipList(),
-      currentPage: 2
-    })
+      elements: StarshipMother.newStarshipList(),
+      currentPage: 2,
+      existsNextPage: true,
+      existsPrevPage: true,
+    }
   }
 }

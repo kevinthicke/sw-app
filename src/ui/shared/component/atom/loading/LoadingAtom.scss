@@ -1,5 +1,19 @@
+@import "./../../../styles/variables";
+
 .loading {
 	width: 100vw;
 	height: 100vh;
-	z-index: 10;
+	position: fixed;
+	visibility: hidden;
+	transition: all 300ms ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: $font-size-2xl;
+	font-style: italic;
+
+	&--displayed {
+		visibility: visible;
+		backdrop-filter: blur(10px);
+	}
 }
