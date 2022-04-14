@@ -1,10 +1,10 @@
-export type Startship = {
-  id: number;
+export type Starship = {
+  id: string;
   name: string;
   model: string;
-  length: number;
-  costInCredits: number;
-  cargoCapacity: number;
+  length: string;
+  costInCredits: string;
+  cargoCapacity: string;
   consumables: string;
-  maxAtmostoheringSpeed: number;
+  maxAtmostoheringSpeed: string;
 }

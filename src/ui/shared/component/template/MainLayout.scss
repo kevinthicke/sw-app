@@ -1,0 +1,33 @@
+@import "./../../../../ui//shared/styles/device-width";
+
+.main-layout {
+	display: grid;
+
+	grid-template-rows: 50px auto 12fr;
+	grid-template-areas:
+		"header"
+		"navigation"
+		"content";
+	height: 100vh;
+
+	@media (min-width: $device-size-md) {
+		grid-template-columns: 1fr 4fr;
+		grid-template-rows: 1fr 12fr;
+		grid-template-areas:
+			"header header"
+			"navigation content";
+	}
+
+	&__navigation-menu {
+		grid-area: navigation;
+		min-width: 250px;
+	}
+
+	&__header {
+		grid-area: header;
+	}
+
+	&__main {
+		grid-area: content;
+	}
+}

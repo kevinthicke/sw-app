@@ -1,1 +1,1 @@
-export type Either<T, K> = { error: T | null, ok: K | null };
+export type Either<L, R> = { error: L, ok: R | null } | { error: L | null, ok: R };

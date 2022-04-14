@@ -1,4 +1,4 @@
-export type StarshipApiDTO = {
+export type StarshipSwapiAPIDTO = {
   name: string,
   model: string,
   manufacturer: string,

@@ -1,3 +1,12 @@
+import { StarshipFilterContainer } from "../molecule/StarshipFilterContainer";
+import { StarshipCardListContainer } from "../organism/StarshipCardListContainer";
+
+
 export const StarShipListPage = () => {
-	return <div>Starship List page</div>;
+	return (
+		<div>
+			<StarshipFilterContainer />
+			<StarshipCardListContainer />
+		</div>
+	);
 };

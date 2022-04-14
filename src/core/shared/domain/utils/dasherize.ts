@@ -1,0 +1,1 @@
+export const dasherize = (value: string) => value.replace(/\s+/g, '-').toLowerCase();

@@ -1,0 +1,13 @@
+@import "./../../styles//variables";
+
+.navigation {
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		margin: $spacing-2;
+	}
+
+	&__title {
+		font-size: $font-size-lg;
+	}
+}

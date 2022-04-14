@@ -2,7 +2,7 @@ import { HttpClientResponse } from "./HttpClientResponse";
 
 type HttpClientParams<T> = {
   url: string;
-  params?: string[];
+  params?: Record<string, string>;
   body?: T;
 }
 
