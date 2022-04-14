@@ -1,3 +1,4 @@
+import { APIError } from "../../../shared/domain/exception/ApiError";
 import { HttpClient } from "../../../shared/domain/httpClient/HttpClient";
 import { BASE_URL } from "../../../shared/infrastructure/constants/baseURL";
 import { SwapiAPIPage } from "../../../shared/infrastructure/dto/SwapiAPIPage";
@@ -8,6 +9,7 @@ import { starshipSwapiAPIMapper } from "../mapper/StarshipSwapiAPIMapper";
 type StarshipAPIRepositoryDependencies = {
   httpClient: HttpClient
 }
+
 
 export const makeStarshipSwapiAPIRepository = ({ httpClient }: StarshipAPIRepositoryDependencies): StarshipRepository => {
   const URL = `${BASE_URL}/starships`
@@ -25,11 +27,12 @@ export const makeStarshipSwapiAPIRepository = ({ httpClient }: StarshipAPIReposi
             params
           })
           .then(response => response.data)
-          .then(data => starshipSwapiAPIMapper.toDomainPage({ ...data, currentPage: page }));
+          .then(data => starshipSwapiAPIMapper.toDomainPage({ ...data, currentPage: page }))
+
         return { error: null, ok: starshipList }
 
-      } catch (error) {
-        return { error: error as Error, ok: null }
+      } catch (err) {
+        return { error: err as APIError, ok: null }
       }
     }
   }

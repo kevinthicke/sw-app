@@ -22,14 +22,8 @@ export const NavigationLinkListMolecule = ({ onSelectedLink }: NavigationLinkLis
 	return (
 		<ul className="navigation-links">
 			{appRouteList.map(({ path, label }) => (
-				<li className={getLinkClassName(path)}>
-					<NavigationLinkAtom
-						key={path}
-						to={path}
-						label={label}
-						isSelected={isPathSelected(path)}
-						onClick={onSelectedLink}
-					/>
+				<li key={path} className={getLinkClassName(path)}>
+					<NavigationLinkAtom to={path} label={label} isSelected={isPathSelected(path)} onClick={onSelectedLink} />
 				</li>
 			))}
 		</ul>

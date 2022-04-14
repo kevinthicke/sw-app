@@ -1,15 +1,24 @@
+import { APIError } from "../../domain/exception/ApiError";
 import { HttpClient } from "../../domain/httpClient/HttpClient";
 
 export const makeFetchHttpClient = (): HttpClient => {
   return {
-    get({ url, params, body }) {
+    async get({ url, params, body }) {
       const urlParams = params ? `?${new URLSearchParams(params)}` : ''
-      console.log({ apiURL: url + urlParams })
-      return fetch(url + urlParams)
-        .then(response => response.json())
-        .then(responseJSON => ({
-          data: responseJSON
-        }));
+
+      try {
+        const response = await fetch(url + urlParams)
+          .then(response => response.json())
+          .then(responseJSON => ({
+            data: responseJSON
+          }))
+
+        return response;
+
+      } catch (error) {
+        console.log('he!')
+        throw new APIError({ message: (error as Error).message })
+      }
     },
   }
 }

@@ -1,3 +1,4 @@
+import { MapperError } from "../../../shared/domain/exception/MapperError"
 import { Page } from "../../../shared/domain/valueObject/Page"
 import { SwapiAPIPage } from "../../../shared/infrastructure/dto/SwapiAPIPage"
 import { Starship } from "../../domain/entity/Starship"
@@ -20,12 +21,17 @@ export const starshipSwapiAPIMapper = {
     return starshipDTOList.map(starshipSwapiAPIMapper.toDomain)
   },
   toDomainPage({ count, results, currentPage, next, previous }: SwapiAPIPage<StarshipSwapiAPIDTO> & { currentPage: number }): Page<Starship> {
-    return {
-      totalElements: count,
-      currentPage,
-      elements: starshipSwapiAPIMapper.toDomainList(results),
-      existsPrevPage: !!previous,
-      existsNextPage: !!next,
+    try {
+      return {
+        totalElements: count,
+        currentPage,
+        elements: starshipSwapiAPIMapper.toDomainList(results),
+        existsPrevPage: !!previous,
+        existsNextPage: !!next,
+      }
+    } catch (e) {
+      throw new MapperError({ message: (e as Error).message })
     }
+
   }
 }
