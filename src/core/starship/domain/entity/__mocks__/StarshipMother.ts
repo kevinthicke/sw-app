@@ -20,7 +20,7 @@ export const StarshipMother = {
       ...starship
     }
   },
-  newStarshipList() {
+  newStarshipDefaultList() {
     const starshipList: Starship[] = [
       {
         id: "1",
@@ -56,13 +56,4 @@ export const StarshipMother = {
 
     return starshipList
   },
-  newStarshipPage(): Page<Starship> {
-    return {
-      totalElements: 10,
-      elements: StarshipMother.newStarshipList(),
-      currentPage: 2,
-      existsNextPage: true,
-      existsPrevPage: true,
-    }
-  }
 }

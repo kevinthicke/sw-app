@@ -24,7 +24,6 @@ export const ButtonAtom = ({
 	variant = "primary",
 	ariaHaspopup = false,
 	ariaControls,
-	ariaLabel,
 	isDisabled = false,
 }: ButtonAtomProps) => {
 	const buttonClassName = `button button--${size} button--${variant}`;
@@ -37,7 +36,6 @@ export const ButtonAtom = ({
 			aria-haspopup={ariaHaspopup}
 			aria-expanded={ariaExpanded}
 			aria-controls={ariaControls}
-			aria-label={ariaLabel}
 			disabled={isDisabled}
 		>
 			{label ? label : children}

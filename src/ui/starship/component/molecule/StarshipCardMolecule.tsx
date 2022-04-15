@@ -8,10 +8,12 @@ type StarshipCardProps = {
 
 export const StarshipCardMolecule = ({ starship }: StarshipCardProps) => {
 	return (
-		<CardAtom>
+		<CardAtom ariaLabel={starship.id}>
 			<div className="starship-card">
-				<h3 className="starship-card__title">{starship.name}</h3>
-				<h4 className="starship-card__subtitle">{starship.model}</h4>
+				<h2 id={starship.id} className="starship-card__title">
+					{starship.name}
+				</h2>
+				<h3 className="starship-card__subtitle">{starship.model}</h3>
 				<ul>
 					<li>Consumables: {starship.consumables}</li>
 					<li>Lenght: {starship.length}</li>

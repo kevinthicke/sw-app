@@ -18,13 +18,7 @@ export const PageSelectorAtom = ({ page, ariaLabel, onPrevPageClick, onNextPageC
 		<nav aria-label={ariaLabel} className="page-selector">
 			<ul className="page-selector__button-group">
 				<li className="page-selector__button-group__button">
-					<ButtonAtom
-						onClick={onPrevPageClick}
-						role="link"
-						size="sm"
-						aria-label="Go to previous page"
-						isDisabled={!page.existsPrevPage}
-					>
+					<ButtonAtom onClick={onPrevPageClick} role="link" size="sm" isDisabled={!page.existsPrevPage}>
 						Prev
 					</ButtonAtom>
 				</li>
@@ -32,13 +26,7 @@ export const PageSelectorAtom = ({ page, ariaLabel, onPrevPageClick, onNextPageC
 					{pageRangeLabel} of {page.totalElements}
 				</span>
 				<li aria-label="Go to next page" className="page-selector__button-group__button">
-					<ButtonAtom
-						onClick={onNextPageClick}
-						role="link"
-						size="sm"
-						aria-label="Go to next page"
-						isDisabled={!page.existsNextPage}
-					>
+					<ButtonAtom onClick={onNextPageClick} role="link" size="sm" isDisabled={!page.existsNextPage}>
 						Next
 					</ButtonAtom>
 				</li>

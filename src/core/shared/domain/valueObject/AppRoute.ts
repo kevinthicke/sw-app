@@ -7,6 +7,15 @@ export enum AppRouteName {
   NOT_FOUND = 'NOT_FOUND'
 }
 
+export enum AppRoutePath {
+  HOME = '/',
+  STARSHIPS_LIST = '/starships',
+  PEOPLE_LIST = '/peoples',
+  VEHICLE_LIST = '/vehicles',
+  PLANET_LIST = '/planets',
+  NOT_FOUND = '*'
+}
+
 export type AppRoute<T = undefined> = {
   name: AppRouteName,
   path: string,

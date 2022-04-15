@@ -1,3 +1,4 @@
+import { createEmptyPage } from "../../../../shared/domain/valueObject/Page";
 import { StarshipRepository } from "../../../domain/repository/StarshipRepository";
 import { StarshipRepositoryFactory } from "../../../infrastructure/repository/StarshipRepositoryFactory";
 import { makeGetAllStarshipsUseCase } from "../getAllStarshipsUseCase";
@@ -13,7 +14,20 @@ describe("GetAllStarshipsUsecase", () => {
 		getAllStarshipsUseCase = makeGetAllStarshipsUseCase({ starshipRepository })
 	})
 
-	describe('When is called with a "keyword"', () => {
+	describe('When is called with a "keyword" and page with value "1"', () => {
+		describe('And is called again with the same "keyword" and page with value "2"', () => {
+			it('Should call "getAll" repository with value "2" in param "page"', async () => {
+				const [page, keyword] = [1, 'test']
+				await getAllStarshipsUseCase({ page, keyword });
+
+				const [newPage, newKeyword] = [2, 'test']
+				await getAllStarshipsUseCase({ page: newPage, keyword: newKeyword })
+
+				const expected = { page: 2, keyword: 'test' }
+				expect(starshipRepository.getAll).toHaveBeenLastCalledWith(expected)
+			})
+		})
+
 		describe('And is called again with other "keyword"', () => {
 			it('Should call "getAll" repository with value "1" in param "page"', async () => {
 				const [page, keyword] = [2, 'test']
@@ -27,4 +41,21 @@ describe("GetAllStarshipsUsecase", () => {
 			})
 		})
 	});
+
+	describe('When is called with a "page" param with value less than "1"', () => {
+		it('Should not call "starshipRepository.getAll"', async () => {
+			const [page, keyword] = [0, 'test']
+			await getAllStarshipsUseCase({ page, keyword });
+
+			expect(starshipRepository.getAll).not.toHaveBeenCalled();
+
+		})
+		it('Should return a promise of an Either of empty page', async () => {
+			const [page, keyword] = [0, 'test']
+			const result = await getAllStarshipsUseCase({ page, keyword });
+
+			const expected = { error: null, ok: createEmptyPage() };
+			expect(result).toEqual(expected);
+		})
+	})
 });

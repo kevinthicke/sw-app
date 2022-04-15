@@ -1,38 +1,38 @@
-import { AppRoute, AppRouteName } from "../valueObject/AppRoute"
+import { AppRoute, AppRouteName, AppRoutePath } from "../valueObject/AppRoute"
 
 export const makeRoutesService = () => {
   const appRouteList: AppRoute[] = [
     {
       name: AppRouteName.HOME,
       label: 'Home',
-      path: '/',
+      path: AppRoutePath.HOME,
       children: [
         {
           name: AppRouteName.STARSHIPS_LIST,
           label: 'Starships',
-          path: '/starships'
+          path: AppRoutePath.STARSHIPS_LIST
         },
         {
           name: AppRouteName.PEOPLE_LIST,
           label: 'Peoples',
-          path: '/peoples'
+          path: AppRoutePath.PEOPLE_LIST
         },
         {
           name: AppRouteName.PLANET_LIST,
           label: 'Planets',
-          path: '/planets'
+          path: AppRoutePath.PLANET_LIST
         },
         {
           name: AppRouteName.VEHICLE_LIST,
           label: 'Vehicles',
-          path: '/vehicles'
+          path: AppRoutePath.VEHICLE_LIST
         },
       ]
     },
     {
       name: AppRouteName.NOT_FOUND,
       label: 'Not found page',
-      path: '*'
+      path: AppRoutePath.NOT_FOUND
     }
   ]
 
