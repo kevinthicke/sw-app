@@ -11,7 +11,7 @@
 	height: 100vh;
 
 	@include breakpoint(sm) {
-		grid-template-columns: 1fr 4fr;
+		grid-template-columns: 1fr 6fr;
 		grid-template-rows: 1fr 12fr;
 		grid-template-areas:
 			"header header"
@@ -24,19 +24,21 @@
 	}
 
 	&__header {
+		min-height: 75px;
 		grid-area: header;
 	}
 
 	&__content {
 		grid-area: content;
 		overflow-y: auto;
+		@include flex-column;
 
 		@include breakpoint(sm) {
 			overflow-y: initial;
 		}
+	}
 
-		&__main {
-			height: 100%;
-		}
+	&__footer {
+		margin-top: auto;
 	}
 }

@@ -2,17 +2,15 @@
 
 .starship-card-list {
 	margin: $spacing-4;
-	padding: $spacing-2;
 
 	@include breakpoint(sm) {
-		height: 70vh;
+		height: 60vh;
 		overflow-y: auto;
 	}
 
 	&__list {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, auto));
 
 		&__item {
 			flex: 1;

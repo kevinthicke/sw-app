@@ -13,7 +13,7 @@ import { StarshipCardListOrganism } from "./StarshipCardListOrganism";
 
 export const StarshipCardListContainer = () => {
 	const [starshipPage, setStarshipPage] = useState<Page<Starship> | null>(null);
-	const [hasError, setHasError] = useState<boolean>(true);
+	const [hasError, setHasError] = useState<boolean>(false);
 	const { currentPage, setCurrentPage } = usePaginate();
 
 	const [search] = useSearchParams();
@@ -34,7 +34,7 @@ export const StarshipCardListContainer = () => {
 	};
 
 	return (
-		<StarshipListErrorMessageWrapperAtom hasError={hasError || !starshipPage} currentPage={currentPage}>
+		<StarshipListErrorMessageWrapperAtom hasError={hasError} currentPage={currentPage}>
 			{starshipPage && (
 				<React.Fragment>
 					<StarshipCardListOrganism starshipList={starshipPage.elements} />

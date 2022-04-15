@@ -21,7 +21,7 @@ export const MainLayout = () => {
 					<main className="main-layout__content__main">
 						<Outlet />
 					</main>
-					<footer>
+					<footer className="main-layout__footer">
 						<FooterAtom />
 					</footer>
 				</div>

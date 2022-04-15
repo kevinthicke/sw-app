@@ -5,6 +5,7 @@ import { AppRoute, AppRouteName } from "./core/shared/domain/valueObject/AppRout
 import { PeopleListPage } from "./ui/people/component/page/PeopleListPage";
 import { PlanetListPage } from "./ui/planet/component/page/PlanetListPage";
 import { ErrorBoundary } from "./ui/shared/component/atom/errorBoundary/ErrorBoundaty";
+import { HomePage } from "./ui/shared/component/page/HomePage";
 import { NotFoundPage } from "./ui/shared/component/page/NotFoundPage";
 import { MainLayout } from "./ui/shared/component/template/MainLayout";
 import { StarShipListPage } from "./ui/starship/component/page/StarshipListPage";
@@ -37,6 +38,7 @@ function App() {
 				<Router>
 					<Routes>
 						<Route path="/" element={<MainLayout />}>
+							<Route index element={<HomePage />} />
 							{homeAppRouteChildren.map((appRoute) => {
 								return <Route key={appRoute.path} path={appRoute.path} element={appRoute.component} />;
 							})}

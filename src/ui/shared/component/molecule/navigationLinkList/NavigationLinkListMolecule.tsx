@@ -10,8 +10,8 @@ type NavigationLinkListMoleculeProps = {
 };
 
 export const NavigationLinkListMolecule = ({ onSelectedLink }: NavigationLinkListMoleculeProps) => {
-	const appRoutesService = makeRoutesService();
-	const appRouteList = appRoutesService.getChildrenByName(AppRouteName.HOME);
+	const { getHome, getChildrenByName } = makeRoutesService();
+	const appRouteList = [getHome(), ...getChildrenByName(AppRouteName.HOME)];
 	const { pathname } = useLocation();
 
 	const isPathSelected = (path: string) => path === pathname;

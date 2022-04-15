@@ -10,7 +10,7 @@ export enum AppRouteName {
 export enum AppRoutePath {
   HOME = '/',
   STARSHIPS_LIST = '/starships',
-  PEOPLE_LIST = '/peoples',
+  PEOPLE_LIST = '/people',
   VEHICLE_LIST = '/vehicles',
   PLANET_LIST = '/planets',
   NOT_FOUND = '*'

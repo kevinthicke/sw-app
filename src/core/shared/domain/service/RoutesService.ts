@@ -14,7 +14,7 @@ export const makeRoutesService = () => {
         },
         {
           name: AppRouteName.PEOPLE_LIST,
-          label: 'Peoples',
+          label: 'People',
           path: AppRoutePath.PEOPLE_LIST
         },
         {
@@ -40,6 +40,10 @@ export const makeRoutesService = () => {
     return appRouteList;
   }
 
+  const getHome = () => {
+    return appRouteList.find(appRoute => appRoute.name === AppRouteName.HOME) as AppRoute;
+  }
+
   const findBaseAppRouteByRouteName = (appRouteName: AppRouteName) => {
     return appRouteList.find(appRoute => appRoute.name === appRouteName) ?? null
   }
@@ -58,6 +62,7 @@ export const makeRoutesService = () => {
   }
 
   return {
+    getHome,
     getBaseAppRoutes,
     getChildrenByName,
     findBaseAppRouteByRouteName,
