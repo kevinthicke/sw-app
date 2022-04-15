@@ -11,7 +11,9 @@ type StarshipCardListProps = {
 export const StarshipCardListOrganism = memo(({ starshipList }: StarshipCardListProps) => {
 	return (
 		<div className="starship-card-list">
-			<h1 id="starship-list">Starships</h1>
+			<h1 id="starship-list" className="starship-card-list__title">
+				Starships
+			</h1>
 			<ul aria-labelledby="starship-list" className="starship-card-list__list">
 				{starshipList.map((starship) => (
 					<li key={starship.id} className="starship-card-list__list__item">

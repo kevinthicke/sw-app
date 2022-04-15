@@ -1,0 +1,7 @@
+@use "/src/sass/abstract/" as *;
+
+.image {
+	width: 100%;
+	border-radius: $rounded-md;
+	@include shadow(sm, $slate);
+}

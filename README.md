@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Imperial Destroyer center App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Core Layer
 
-## Available Scripts
+- Agnostic to React Framework
+- Implemented following Hexagonal Architectural approach
+- ObjectMother pattern for mock
+- Use on an Error notifier (see `handleErrorUsecase` and its dependencies)
+    
+> *Future work: (just for fun :P)*
+> - Add a library for _Inversion of Control_ like [InversifyJS](https://inversify.io/)
+> - Use _Either Monad_ correctly for Error Handing.
+> - Implement CQRS (Command Query Responsibility Segregation)
 
-In the project directory, you can run:
+### UI Layer
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Components
+- Framework dependent: React
+- Use of [Atomic Design](https://www.uifrommars.com/atomic-design-ventajas/) for component system.
+- Use [Dan Abramov's Presentational and Containers components pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) 
+- Custom React Hooks (see `useConsumeUsecase.ts` for consuming use cases of the core layer or `usePagination` for pagination)
+- Special attention to HTML semantic (correct roles, aria labels, etc)
+#### Error handling
+- Use of a custom _ErrorBoundary_ component for React error handing (see `ErrorBoundary` component)
+#### Testing 
+- Use of _Testing Library_ for test the _user interaction_: components with its usecase dependencies. We only mock the infrastructure dependencies (see `StarshipListTest.spec.tsx` for example)
+- Use of [Arrange-Arc-Assert pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
+  
+#### Styling
+- SCSS for styling components.
+- Use of BEM Architecture for CSS
+ 
+> *Future work*
+> - Continue following the [Testing Trophy of Kent C.Dodds](https://kentcdodds.com/blog/write-tests) for testing.
+> - Stop splitting components in presentational/containers. This pattern is not a neccessity with the React hooks.
+> - Install [Jest Axe](https://github.com/nickcolley/jest-axe) test library as a first glance to work on improve web accesibility.
+> - Use jest.mock for mock infrastruture dependencies instead of instanciate a *mock* repository implementation.

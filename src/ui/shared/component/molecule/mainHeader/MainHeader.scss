@@ -5,8 +5,7 @@
 	height: 100%;
 	padding: 0 $spacing-2;
 	@include flex-center-vert;
-
-	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.29);
+	@include shadow(sm);
 
 	&__title {
 		font-size: $font-size-3xl;

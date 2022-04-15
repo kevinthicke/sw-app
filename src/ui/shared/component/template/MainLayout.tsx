@@ -17,8 +17,8 @@ export const MainLayout = () => {
 				<div className="main-layout__navigation-menu">
 					<NavigationMenuOrganism />
 				</div>
-				<div className="main-layout__main">
-					<main>
+				<div className="main-layout__content">
+					<main className="main-layout__content__main">
 						<Outlet />
 					</main>
 					<footer>

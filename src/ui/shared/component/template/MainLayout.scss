@@ -27,12 +27,16 @@
 		grid-area: header;
 	}
 
-	&__main {
+	&__content {
 		grid-area: content;
 		overflow-y: auto;
 
 		@include breakpoint(sm) {
 			overflow-y: initial;
+		}
+
+		&__main {
+			height: 100%;
 		}
 	}
 }

@@ -2,6 +2,7 @@
 
 .starship-card-list {
 	margin: $spacing-4;
+	padding: $spacing-2;
 
 	@include breakpoint(sm) {
 		height: 70vh;

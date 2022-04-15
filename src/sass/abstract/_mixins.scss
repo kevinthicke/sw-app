@@ -12,6 +12,41 @@
 	transform: $prop;
 }
 
+@mixin shadow($size, $color: $slate-dark) {
+	@if $size == sm {
+		box-shadow: 0 0 $spacing-2 0 $color;
+	} @else if $size == md {
+		box-shadow: 0 0 $spacing-4 0 $color;
+	} @else if $size == lg {
+		box-shadow: 0 0 $spacing-6 0 $color;
+	}
+}
+
+@mixin heading($prop) {
+	@if $prop == h1 {
+		font-size: $font-size-3xl;
+		text-transform: uppercase;
+		color: $black;
+		font-weight: $font-light;
+		@content;
+	} @else if $prop == h2 {
+		font-size: $font-size-2xl;
+		color: $black;
+		font-weight: $font-light;
+		margin: $spacing-2 0;
+		@content;
+	} @else if $prop == h3 {
+		font-size: $font-size-xl;
+		color: $slate-dark;
+		font-weight: $font-light;
+		margin: $spacing-1 0;
+		@content;
+	} @else if $prop == h4 {
+		font-size: $font-size-lg;
+		@content;
+	}
+}
+
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {
 		@content;
