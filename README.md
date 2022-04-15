@@ -1,5 +1,15 @@
 # Imperial Destroyer center App
 
+Imperial Destroyer Center App is a SPA where you can all the Star Wars data you have ever wanted: Planets, Spaceships, Vehicles, People, Films and Species.
+
+## Stripts
+
+```bash
+$> npm i
+$> npm run start
+```
+
+## Architecture
 ### Core Layer
 
 - Agnostic to React Framework
@@ -7,10 +17,12 @@
 - ObjectMother pattern for mock
 - Use on an Error notifier (see `handleErrorUsecase` and its dependencies)
     
-> *Future work: (just for fun :P)*
+> *Future work:*
+> - Use absolute routes for modules import
+> - Improve React performance with: _useMemo_ and _useCallback_ hook, dynamic component imports,  lazy loading for images.
 > - Add a library for _Inversion of Control_ like [InversifyJS](https://inversify.io/)
 > - Use _Either Monad_ correctly for Error Handing.
-> - Implement CQRS (Command Query Responsibility Segregation)
+> - Implement CQRS Command Query Responsibility Segregation (?)
 
 ### UI Layer
 
@@ -22,6 +34,7 @@
 - Special attention to HTML semantic (correct roles, aria labels, etc)
 #### Error handling
 - Use of a custom _ErrorBoundary_ component for React error handing (see `ErrorBoundary` component)
+- Use of webp image format when it is possible.
 #### Testing 
 - Use of _Testing Library_ for test the _user interaction_: components with its usecase dependencies. We only mock the infrastructure dependencies (see `StarshipListTest.spec.tsx` for example)
 - Use of [Arrange-Arc-Assert pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
