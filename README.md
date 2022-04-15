@@ -9,7 +9,7 @@ $> npm i
 $> npm run start
 ```
 
-## Architecture
+## Architecture 
 
 ### Core Layer
 
@@ -18,7 +18,7 @@ $> npm run start
 - ✔️ ObjectMother pattern for mock
 - ✔️ Use on an Error notifier (see `handleErrorUsecase` and its dependencies)
 
-> 📝 _Future work:_
+> 📝 **_Future work:_**
 >
 > - Use absolute routes for modules import
 > - Improve React performance with: _useMemo_ and _useCallback_ hook, dynamic component imports, lazy loading for images.
@@ -51,7 +51,7 @@ $> npm run start
 - ✔️ SCSS for styling components.
 - ✔️ Use of BEM Architecture for CSS
 
-> 📝 _Future work_
+> 📝 **_Future work_**
 >
 > - Continue following the [Testing Trophy of Kent C.Dodds](https://kentcdodds.com/blog/write-tests) for testing.
 > - Install [Jest Axe](https://github.com/nickcolley/jest-axe) test library as a first glance to work on improve web accesibility.
