@@ -1,6 +1,4 @@
-@import "./../../../shared/styles/variables.scss";
-@import "./../../../shared/styles/device-width";
-@import "./../../../shared/styles/mixins";
+@use "/src/sass/abstract" as *;
 
 .starship-card-list {
 	margin: $spacing-4;

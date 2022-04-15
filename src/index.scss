@@ -1,14 +1,1 @@
-@import "ui/shared/styles/variables.scss";
-@import "ui/shared/styles/device-width";
-@import "ui/shared/styles/scroll-bar.scss";
-
-body {
-	margin: 0;
-	font-family: Arial, sans-serif;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
+@use "sass/base";

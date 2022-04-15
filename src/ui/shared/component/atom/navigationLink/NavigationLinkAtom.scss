@@ -1,4 +1,4 @@
-@import "./../../../../../ui/shared/styles/mixins";
+@use "/src/sass/abstract" as *;
 
 .link {
 	text-decoration: none;

@@ -1,4 +1,4 @@
-@import "./../../../styles/variables";
+@use "/src/sass/abstract" as *;
 
 .button {
 	text-transform: uppercase;

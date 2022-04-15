@@ -1,5 +1,4 @@
-@import "./../../../styles/variables";
-@import "./../../../styles/mixins";
+@use "/src/sass/abstract" as *;
 
 @include keyframes(spin) {
 	0% {

@@ -1,4 +1,4 @@
-@import "./../../../../ui/shared/styles/variables";
+@use "/src/sass/abstract" as *;
 
 .filter {
 	height: 60px;

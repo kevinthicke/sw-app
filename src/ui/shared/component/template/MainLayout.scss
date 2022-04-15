@@ -1,5 +1,4 @@
-@import "./../../../../ui//shared/styles/device-width";
-@import "./../../../../ui//shared/styles/mixins";
+@use "/src/sass/abstract" as *;
 
 .main-layout {
 	display: grid;
