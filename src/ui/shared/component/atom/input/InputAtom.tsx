@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { dasherize } from "../../../../../core/shared/domain/utils/dasherize";
 import "./InputAtom.scss";
 
@@ -10,7 +10,7 @@ type InputAtomProps = {
 	onClick?: () => any;
 };
 
-export const InputAtom = ({ value, label, onChange, type = "text", onClick = () => {} }: InputAtomProps) => {
+export const InputAtom = memo(({ value, label, onChange, type = "text", onClick = () => {} }: InputAtomProps) => {
 	return (
 		<div className="form-control">
 			{label && (
@@ -30,4 +30,4 @@ export const InputAtom = ({ value, label, onChange, type = "text", onClick = () 
 			></input>
 		</div>
 	);
-};
+});

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Starship } from "../../../../core/starship/domain/entity/Starship";
 import { CardAtom } from "../../../shared/component/atom/card/CardAtom";
 import "./StarshipCardMolecule.scss";
@@ -6,7 +7,7 @@ type StarshipCardProps = {
 	starship: Starship;
 };
 
-export const StarshipCardMolecule = ({ starship }: StarshipCardProps) => {
+export const StarshipCardMolecule = memo(({ starship }: StarshipCardProps) => {
 	return (
 		<CardAtom ariaLabel={starship.id}>
 			<div className="starship-card">
@@ -22,4 +23,4 @@ export const StarshipCardMolecule = ({ starship }: StarshipCardProps) => {
 			</div>
 		</CardAtom>
 	);
-};
+});

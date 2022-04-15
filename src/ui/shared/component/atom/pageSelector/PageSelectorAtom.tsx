@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { compose } from "../../../../../core/shared/domain/utils/compose";
 import { Page } from "../../../../../core/shared/domain/valueObject/Page";
 import { createPageRangeFrom, getPageRangeToString } from "../../../../../core/shared/domain/valueObject/PageRange";
@@ -11,7 +12,7 @@ type PageSelectorAtomProps = {
 	onNextPageClick: () => any;
 };
 
-export const PageSelectorAtom = ({ page, ariaLabel, onPrevPageClick, onNextPageClick }: PageSelectorAtomProps) => {
+export const PageSelectorAtom = memo(({ page, ariaLabel, onPrevPageClick, onNextPageClick }: PageSelectorAtomProps) => {
 	const pageRangeLabel = compose(createPageRangeFrom, getPageRangeToString)(page);
 
 	return (
@@ -33,4 +34,4 @@ export const PageSelectorAtom = ({ page, ariaLabel, onPrevPageClick, onNextPageC
 			</ul>
 		</nav>
 	);
-};
+});

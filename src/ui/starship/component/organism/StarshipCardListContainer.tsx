@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { compose } from "../../../../core/shared/domain/utils/compose";
-import { createEmptyPage, Page } from "../../../../core/shared/domain/valueObject/Page";
+import { Page } from "../../../../core/shared/domain/valueObject/Page";
 import { getAllStarshipsUseCase } from "../../../../core/starship/application/useCase/getAllStarshipsUseCase";
 import { Starship } from "../../../../core/starship/domain/entity/Starship";
 import { StarshipRouteQueryParams } from "../../../../core/starship/domain/valueObject/StarshipRouteQueryParams";
@@ -18,17 +17,17 @@ export const StarshipCardListContainer = () => {
 	const { currentPage, setCurrentPage } = usePaginate();
 
 	const [search] = useSearchParams();
-	const searchParam = search.get(StarshipRouteQueryParams.SEARCH);
 
 	const { consume } = useConsumeUsecase();
 
 	useEffect(() => {
+		const searchParam = search.get(StarshipRouteQueryParams.SEARCH);
 		consume({
 			usecase: getAllStarshipsUseCase({ page: currentPage, keyword: searchParam ?? "" }),
 			onSuccess: setStarshipPage,
 			onError: compose(Boolean, setHasError),
 		});
-	}, [currentPage, searchParam]);
+	}, [currentPage, search]);
 
 	const updateCurrentPage = (value: 1 | -1) => {
 		setCurrentPage((currentPage) => currentPage + value);

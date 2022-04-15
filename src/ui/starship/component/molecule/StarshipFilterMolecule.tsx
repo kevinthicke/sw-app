@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { ButtonAtom } from "../../../shared/component/atom/button/ButtonAtom";
+import { memo, useState } from "react";
 import { InputAtom } from "../../../shared/component/atom/input/InputAtom";
 import "./StarshipFilterMolecule.scss";
 
@@ -8,7 +7,7 @@ type StarshipFilterMoleculeProps = {
 	onSearchStarshipByName: (keyword: string) => any;
 };
 
-export const StarshipFilterMolecule = ({ value, onSearchStarshipByName }: StarshipFilterMoleculeProps) => {
+export const StarshipFilterMolecule = memo(({ value, onSearchStarshipByName }: StarshipFilterMoleculeProps) => {
 	const [searchKeyword, setSearchKeyword] = useState<string>(value);
 
 	const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,4 +27,4 @@ export const StarshipFilterMolecule = ({ value, onSearchStarshipByName }: Starsh
 			<InputAtom type="button" value="Search!" onClick={handleOnClick} />
 		</div>
 	);
-};
+});

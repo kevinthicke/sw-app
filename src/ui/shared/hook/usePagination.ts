@@ -17,11 +17,15 @@ export const usePaginate = () => {
   };
 
   const pageParam = search.get(StarshipRouteQueryParams.PAGE);
-  if (!checkIsValidParam(pageParam)) {
-    setSearch({ [StarshipRouteQueryParams.PAGE]: `${DEFAULT_PAGE}` });
-  }
 
-  const currentPage = Number(pageParam);
+  useEffect(() => {
+    if (!checkIsValidParam(pageParam)) {
+      setSearch({ [StarshipRouteQueryParams.PAGE]: `${DEFAULT_PAGE}` });
+    }
+  }, [pageParam, setSearch])
+
+
+  const currentPage = pageParam ? Number(pageParam) : DEFAULT_PAGE;
 
   return {
     currentPage,

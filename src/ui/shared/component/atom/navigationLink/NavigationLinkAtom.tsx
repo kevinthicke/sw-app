@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "./NavigationLinkAtom.scss";
 
@@ -9,7 +9,7 @@ export type NavigationLinkAtomProps = {
 	onClick?: () => any;
 };
 
-export const NavigationLinkAtom = ({ to, label, isSelected, onClick }: NavigationLinkAtomProps) => {
+export const NavigationLinkAtom = memo(({ to, label, isSelected, onClick }: NavigationLinkAtomProps) => {
 	const ariaCurrent = isSelected ? "page" : "false";
 
 	return (
@@ -17,4 +17,4 @@ export const NavigationLinkAtom = ({ to, label, isSelected, onClick }: Navigatio
 			{label}
 		</Link>
 	);
-};
+});

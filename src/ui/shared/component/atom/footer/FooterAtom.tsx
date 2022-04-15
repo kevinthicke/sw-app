@@ -1,6 +1,7 @@
+import { memo } from "react";
 import "./FooterAtom.scss";
 
-export const FooterAtom = () => {
+export const FooterAtom = memo(() => {
 	return (
 		<div className="footer">
 			<div className="footer__list-container">
@@ -20,4 +21,4 @@ export const FooterAtom = () => {
 			<p className="footer__meta">Test app for IriusRisk</p>
 		</div>
 	);
-};
+});
