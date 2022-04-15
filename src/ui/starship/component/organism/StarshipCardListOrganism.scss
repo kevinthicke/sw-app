@@ -1,10 +1,11 @@
 @import "./../../../shared/styles/variables.scss";
 @import "./../../../shared/styles/device-width";
+@import "./../../../shared/styles/mixins";
 
 .starship-card-list {
 	margin: $spacing-4;
 
-	@media (min-width: $device-size-sm) {
+	@include breakpoint(sm) {
 		height: 70vh;
 		overflow-y: auto;
 	}

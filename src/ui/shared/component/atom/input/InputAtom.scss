@@ -1,8 +1,8 @@
 @import "./../../../styles/variables";
+@import "./../../../styles/mixins";
 
 .form-control {
-	display: flex;
-	flex-direction: column;
+	@include flex-column;
 
 	&__label {
 		font-style: italic;

@@ -1,17 +1,17 @@
 @import "./../../styles/variables";
 @import "./../../styles/device-width";
+@import "./../../styles/mixins";
 
 .navigation {
 	background: $slate;
 
-	@media (min-width: $device-size-sm) {
+	@include breakpoint(md) {
 		height: 100%;
 	}
 
 	&__header {
-		display: flex;
+		@include flex-center-vert;
 		justify-content: space-between;
-		align-items: center;
 		margin: 0 $spacing-2;
 		padding-top: $spacing-3;
 		border-bottom: 1px solid $slate-dark;
@@ -24,7 +24,7 @@
 	}
 
 	&__button {
-		@media (min-width: $device-size-sm) {
+		@include breakpoint(md) {
 			display: none;
 		}
 	}
@@ -35,7 +35,7 @@
 		transition: all 400ms ease-in-out;
 		margin-top: -200px;
 
-		@media (min-width: $device-size-sm) {
+		@include breakpoint(md) {
 			visibility: visible;
 			opacity: 1;
 			margin: 0;

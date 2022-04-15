@@ -1,5 +1,6 @@
 @import "./../../../styles/variables";
 @import "./../../../styles/device-width";
+@import "./../../../styles/mixins";
 
 .footer {
 	background-color: black;
@@ -15,7 +16,7 @@
 		width: 100%;
 		justify-content: space-between;
 
-		@media (min-width: $device-size-sm) {
+		@include breakpoint(sm) {
 			width: 70%;
 			justify-content: space-between;
 		}

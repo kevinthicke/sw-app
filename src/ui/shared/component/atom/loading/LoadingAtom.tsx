@@ -6,6 +6,5 @@ type LoadingAtomProps = {
 };
 
 export const LoadingAtom = memo(({ isDisplayed }: LoadingAtomProps) => {
-	const className = `loading ${isDisplayed ? "loading--displayed" : ""}`;
-	return <div className={className}>Loading</div>;
+	return isDisplayed ? <div className="loading" /> : <div />;
 });

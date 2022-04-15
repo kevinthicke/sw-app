@@ -1,4 +1,5 @@
 @import "./../../../styles/variables";
+@import "./../../../styles/mixins";
 
 .card {
 	box-shadow: 0 0 21px 0 rgba(0, 0, 0, 0.09);
@@ -7,6 +8,6 @@
 	transition: all 300ms ease-in-out;
 
 	&:hover {
-		transform: scale(1.05);
+		@include transform(scale(1.05));
 	}
 }
