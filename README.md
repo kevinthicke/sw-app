@@ -12,7 +12,7 @@ $> npm run start
 ## Architecture
 ### Core Layer
 
-- Agnostic to React Framework
+- ✔️ Agnostic to React Framework
 - Implemented following Hexagonal Architectural approach
 - ObjectMother pattern for mock
 - Use on an Error notifier (see `handleErrorUsecase` and its dependencies)
